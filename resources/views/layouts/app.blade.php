@@ -147,16 +147,25 @@
                 
                 <!-- Col 1: Brand Info -->
                 <div class="lg:col-span-2 space-y-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-xl bg-white text-[#23271D] flex items-center justify-center font-black">
-                            <svg class="w-5 h-5 text-[#23271D]" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
-                            </svg>
+                    <a href="{{ route('home') }}" class="group flex items-center gap-3">
+                        @if($currentSettings->logo_url)
+                            <img src="{{ $currentSettings->logo_url }}" alt="{{ $currentSettings->agency_name }}" class="h-9 w-auto object-contain">
+                        @else
+                            <div class="w-9 h-9 rounded-xl bg-white text-[#23271D] flex items-center justify-center font-black">
+                                <svg class="w-5 h-5 text-[#23271D]" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
+                                </svg>
+                            </div>
+                        @endif
+                        <div class="flex flex-col">
+                            <span class="font-extrabold text-xl tracking-tight text-white leading-none">{{ $currentSettings->agency_name }}</span>
+                            @if($currentSettings->tagline)
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-[#8E9785] mt-1">{{ $currentSettings->tagline }}</span>
+                            @endif
                         </div>
-                        <span class="font-extrabold text-xl tracking-tight text-white">AERO<span class="text-[#8E9785]">STEP</span></span>
-                    </div>
+                    </a>
                     <p class="text-sm leading-relaxed max-w-sm text-[#8E9785]">
-                        High-velocity digital engineering studio. We partner with founders, venture-backed scaleups, and enterprise businesses to craft production-grade web, mobile, desktop software and browser extensions.
+                        {{ $currentSettings->hero_subheadline ?? 'High-velocity digital engineering studio. We partner with founders, venture-backed scaleups, and enterprise businesses to craft production-grade web, mobile, desktop software and browser extensions.' }}
                     </p>
                     <div class="flex items-center gap-3 text-white pt-2">
                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
