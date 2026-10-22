@@ -28,6 +28,10 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->brandName(fn () => \App\Models\SiteSetting::current()?->agency_name ?: 'VackLink')
+            ->brandLogo(fn () => \App\Models\SiteSetting::current()?->logo_url)
+            ->brandLogoHeight('2.5rem')
+            ->favicon(fn () => \App\Models\SiteSetting::current()?->favicon_url)
             ->colors([
                 'primary' => Color::Amber,
             ])

@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
 
         // Alias admin
         User::updateOrCreate(
-            ['email' => 'admin@aeroagency.dev'],
+            ['email' => 'admin@vacklink.com'],
             [
                 'name' => 'Agency Senior Partner',
                 'password' => Hash::make('password123'),

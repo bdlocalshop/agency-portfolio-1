@@ -35,7 +35,7 @@ class SiteSetting extends Model
     public static function current(): self
     {
         return static::firstOrCreate([], [
-            'agency_name' => 'AeroAgency',
+            'agency_name' => 'VackLink',
             'tagline' => 'Software Engineering Studio',
             'hero_badge' => 'Software Engineering Studio',
             'hero_headline' => 'Engineering High-Performance Digital Products.',
@@ -44,7 +44,7 @@ class SiteSetting extends Model
             'primary_cta_url' => '#contact',
             'secondary_cta_text' => 'Explore Case Studies',
             'secondary_cta_url' => '#portfolio',
-            'contact_email' => 'hello@aeroagency.dev',
+            'contact_email' => 'hello@vacklink.com',
             'contact_phone' => '+1 (555) 019-2834',
             'contact_location' => 'San Francisco, CA & Remote Global',
             'github_url' => 'https://github.com',

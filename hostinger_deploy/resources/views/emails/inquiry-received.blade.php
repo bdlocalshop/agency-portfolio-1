@@ -8,7 +8,8 @@
     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; border: 1px solid #E7E9E2; overflow: hidden;">
         <tr>
             <td style="padding: 24px 32px; background-color: #23271D; color: #ffffff;">
-                <h1 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.5px;">AeroAgency • New Inquiry</h1>
+                @php $agencyName = \App\Models\SiteSetting::current()->agency_name ?? 'VackLink'; @endphp
+                <h1 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.5px;">{{ $agencyName }} • New Inquiry</h1>
             </td>
         </tr>
         <tr>
@@ -50,7 +51,7 @@
                 </div>
 
                 <div style="margin-top: 32px; text-align: center;">
-                    <a href="mailto:{{ $inquiry->email }}?subject=Re:%20AeroAgency%20Project%20Discovery" style="display: inline-block; background-color: #23271D; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 12px 28px; border-radius: 9999px;">
+                    <a href="mailto:{{ $inquiry->email }}?subject=Re:%20{{ rawurlencode($agencyName) }}%20Project%20Discovery" style="display: inline-block; background-color: #23271D; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 12px 28px; border-radius: 9999px;">
                         Reply to {{ $inquiry->name }}
                     </a>
                 </div>

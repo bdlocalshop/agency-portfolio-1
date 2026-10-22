@@ -80,7 +80,7 @@
                             <!-- Main Featured Image Card (16:10 aspect ratio preserved for CLS prevention) -->
                             <div class="aspect-[16/11] rounded-2xl overflow-hidden shadow-lg border border-[#E2E6DC] bg-[#EAECE6] relative group">
                                 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80"
-                                     alt="AeroAgency Engineered Systems"
+                                     alt="{{ $settings->agency_name ?? 'VackLink' }} Engineered Systems"
                                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                                      loading="eager"
                                      fetchpriority="high"
@@ -579,7 +579,7 @@
                         Dedicated Senior Developers. No Junior Hand-offs.
                     </h3>
                     <p class="text-sm text-[#AAB4A1] max-w-xl leading-relaxed">
-                        When you work with AeroAgency, your codebase is architected by seasoned full-stack engineers with deep Laravel, Vue, Flutter, and Electron expertise. We quote transparently and deliver deterministically.
+                        When you work with {{ $settings->agency_name ?? 'VackLink' }}, your codebase is architected by seasoned full-stack engineers with deep Laravel, Vue, Flutter, and Electron expertise. We quote transparently and deliver deterministically.
                     </p>
 
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
@@ -804,9 +804,23 @@
                             </div>
                             <div>
                                 <span class="block text-xs text-[#71786A]">Direct Email</span>
-                                <a href="mailto:contact@aeroagency.dev" class="font-bold text-[#1F241B] hover:underline">contact@aeroagency.dev</a>
+                                <a href="mailto:{{ $siteSettings->contact_email }}" class="font-bold text-[#1F241B] hover:underline">{{ $siteSettings->contact_email }}</a>
                             </div>
                         </div>
+
+                        @if(!empty($siteSettings->contact_phone))
+                        <div class="flex items-center gap-3 text-sm">
+                            <div class="w-8 h-8 rounded-lg bg-[#F4F5F1] text-[#23271D] flex items-center justify-center shrink-0">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-[#71786A]">Phone / WhatsApp</span>
+                                <a href="tel:{{ preg_replace('/[^0-9+]/', '', $siteSettings->contact_phone) }}" class="font-bold text-[#1F241B] hover:underline">{{ $siteSettings->contact_phone }}</a>
+                            </div>
+                        </div>
+                        @endif
 
                         <div class="flex items-center gap-3 text-sm">
                             <div class="w-8 h-8 rounded-lg bg-[#F4F5F1] text-[#23271D] flex items-center justify-center shrink-0">

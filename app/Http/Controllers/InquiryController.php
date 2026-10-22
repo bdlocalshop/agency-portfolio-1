@@ -63,8 +63,9 @@ class InquiryController extends Controller
             'status' => Inquiry::STATUS_NEW,
         ]);
 
-        // 4. Dispatch queued notification email
-        $recipient = env('AGENCY_CONTACT_EMAIL', config('mail.from.address'));
+        // 4. Dispatch queued notification email to admin-configured contact email
+        $siteSettings = \App\Models\SiteSetting::current();
+        $recipient = $siteSettings->contact_email ?: env('AGENCY_CONTACT_EMAIL', config('mail.from.address'));
         try {
             Mail::to($recipient)->queue(new InquiryReceivedMail($inquiry));
         } catch (\Exception $e) {

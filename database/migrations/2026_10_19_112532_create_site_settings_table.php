@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('site_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('agency_name')->default('AeroAgency');
+            $table->string('agency_name')->default('VackLink');
             $table->string('tagline')->nullable()->default('Software Engineering Studio');
             $table->string('site_logo')->nullable();
             $table->string('favicon')->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('primary_cta_url')->default('#contact');
             $table->string('secondary_cta_text')->default('Explore Case Studies');
             $table->string('secondary_cta_url')->default('#portfolio');
-            $table->string('contact_email')->default('hello@aeroagency.dev');
+            $table->string('contact_email')->default('hello@vacklink.com');
             $table->string('contact_phone')->nullable()->default('+1 (555) 019-2834');
             $table->string('contact_location')->nullable()->default('San Francisco, CA & Remote Global');
             $table->string('github_url')->nullable()->default('https://github.com');
